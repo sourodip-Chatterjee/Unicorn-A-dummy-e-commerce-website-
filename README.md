@@ -8,8 +8,7 @@
 A high-fidelity, fully responsive e-commerce frontend prototype designed for sustainable fashion brands. This project serves as a white-label template and architectural proof-of-concept, demonstrating advanced frontend state management, dynamic DOM rendering, and mobile-first UX design.
 
 ## 🔗 Live Demo
-<!-- WIll be added soon.-->
-
+https://sourodip-chatterjee.github.io/Unicorn-A-dummy-e-commerce-website-/
 ---
 
 ## ✨ Key Features & UX Engineering
