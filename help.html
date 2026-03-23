@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicorn | Help & Support</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="background-color: #fafafa">
+    <header>
+      <div
+        class="logo"
+        style="flex: 1; display: flex; justify-content: flex-start"
+      >
+        <a href="index.html" style="text-decoration: none; color: inherit"
+          >🌿🦄 Unicorn</a
+        >
+      </div>
+
+      <nav style="flex: 0 0 auto">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#shop">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#" id="login-link" class="login-nav">Log In</a></li>
+        </ul>
+      </nav>
+
+      <div
+        class="header-actions"
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          gap: 20px;
+          padding-bottom: 5px;
+        "
+      >
+        <div
+          class="search-container"
+          style="
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 12px;
+          "
+        >
+          <button
+            id="search-icon-btn"
+            title="Search"
+            style="
+              background: none;
+              border: none;
+              cursor: pointer;
+              padding: 5px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              src="img/search-icon.png"
+              alt="Search"
+              style="width: 20px; height: 20px; object-fit: contain"
+            />
+          </button>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search nature..."
+            autocomplete="off"
+          />
+          <div id="search-results" class="search-dropdown"></div>
+        </div>
+
+        <a href="wishlist.html" class="nav-action-wrapper" title="Wishlist">
+          <div class="icon-container">
+            <img src="img/heart-icon.png" alt="Wishlist" class="nav-icon" />
+            <span
+              id="wishlist-count"
+              class="notification-badge"
+              style="display: none"
+              >0</span
+            >
+          </div>
+          <span class="nav-label">Wishlist</span>
+        </a>
+
+        <a href="cart.html" class="nav-action-wrapper" title="Basket">
+          <div class="icon-container">
+            <img
+              src="img/empty-basket.png"
+              id="cart-icon-img"
+              alt="Basket"
+              class="nav-icon"
+            />
+            <span
+              id="cart-count"
+              class="notification-badge"
+              style="display: none"
+              >0</span
+            >
+          </div>
+          <span class="nav-label">Basket</span>
+        </a>
+
+        <button
+          id="cursor-toggle"
+          class="nav-action-wrapper"
+          title="Toggle Nature Cursor"
+        >
+          <div
+            class="circle-icon"
+            style="
+              width: 25px;
+              height: 25px;
+              font-size: 1.25rem;
+              border-color: #a3b18a;
+              background-color: #fafafa;
+            "
+          >
+            🖱️
+          </div>
+          <span class="nav-label">Cursor</span>
+        </button>
+
+        <div class="help-dropdown-container" style="position: relative">
+          <button
+            id="help-menu-btn"
+            class="nav-action-wrapper"
+            title="Help & Support"
+          >
+            <div class="circle-icon">❓</div>
+            <span class="nav-label">Help</span>
+          </button>
+          <div id="help-dropdown-menu" class="help-dropdown">
+            <a href="help.html#returns">Returns & Refunds (CA)</a>
+            <a href="help.html#faq">FAQs</a>
+            <a href="help.html#support">Customer Support</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="help-container">
+      <h1
+        style="
+          text-align: center;
+          color: #344e41;
+          margin-bottom: 40px;
+          font-size: 2.5rem;
+        "
+      >
+        How can we help you? 🌱
+      </h1>
+
+      <div class="help-box" id="returns">
+        <h2>Return & Refund Policy (Canada)</h2>
+        <p style="margin-bottom: 15px">
+          We want you to love your natural wardrobe. If a leaf doesn't quite fit
+          your branch, we are here to help.
+        </p>
+
+        <h4 style="color: #344e41; margin-top: 20px">
+          30-Day Happiness Guarantee
+        </h4>
+        <p style="margin-bottom: 15px">
+          In accordance with Canadian consumer protection guidelines, you have
+          <strong>30 calendar days</strong> from the date of delivery to return
+          any unworn, unwashed items with their original eco-tags attached.
+        </p>
+
+        <h4 style="color: #344e41; margin-top: 20px">Refund Process</h4>
+        <ul
+          style="
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.6;
+          "
+        >
+          <li>Refunds are issued to your original payment method in CAD.</li>
+          <li>
+            Please allow 5-7 business days for your Canadian bank or credit card
+            provider to process the transaction.
+          </li>
+          <li>Original shipping fees (if applicable) are non-refundable.</li>
+        </ul>
+
+        <h4 style="color: #344e41; margin-top: 20px">
+          Eco-Friendly Return Shipping
+        </h4>
+        <p>
+          To minimize our carbon footprint, we provide a pre-paid, consolidated
+          return label via Canada Post for a flat fee of $8.00 CAD, which will
+          be deducted from your total refund amount.
+        </p>
+      </div>
+
+      <div class="help-box" id="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">Are your dyes completely natural?</div>
+          <div class="faq-answer">
+            Yes! We strictly use plant-based, non-toxic dyes derived from roots,
+            leaves, and bark. Because of this, slight color variations are
+            normal and make each piece unique.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Do you ship outside of Canada?</div>
+          <div class="faq-answer">
+            Currently, we are focusing on serving our local Canadian community
+            to keep our shipping emissions as low as possible. We plan to expand
+            to the US next year!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I apply a discount code?</div>
+          <div class="faq-answer">
+            You can apply your promo code (like NATURE20) directly in your
+            Basket before proceeding to the secure checkout page.
+          </div>
+        </div>
+      </div>
+
+      <div class="help-box" id="support">
+        <h2>Customer Support</h2>
+        <p style="margin-bottom: 25px">
+          Need a human touch? Our team in Vancouver is ready to assist you.
+        </p>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #f3f7f3;
+            padding: 25px;
+            border-radius: 10px;
+          "
+        >
+          <div>
+            <strong style="color: #588157; display: block; margin-bottom: 5px"
+              >Email Us</strong
+            >
+            <a
+              href="mailto:support@unicornnature.ca"
+              style="color: #333; text-decoration: none"
+              >support@unicornnature.ca</a
+            >
+            <p style="font-size: 0.85rem; color: #666; margin-top: 5px">
+              We reply within 24 hours.
+            </p>
+          </div>
+          <div>
+            <strong style="color: #588157; display: block; margin-bottom: 5px"
+              >Call Us (Toll-Free)</strong
+            >
+            <a
+              href="tel:+18005550199"
+              style="color: #333; text-decoration: none"
+              >(604) 555-0155</a
+            >
+            <p style="font-size: 0.85rem; color: #666; margin-top: 5px">
+              Mon-Fri: 9am - 5pm PST
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Unicorn E-Commerce. Sustainably crafted in Canada.</p>
+      </div>
+    </footer>
+
+    <div id="auth-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <div class="auth-toggle-container">
+          <button id="toggle-login" class="auth-toggle-btn active">
+            Log In
+          </button>
+          <button id="toggle-signup" class="auth-toggle-btn">Sign Up</button>
+        </div>
+
+        <form id="modal-login-form" class="modal-form-view active-view">
+          <h2 style="color: #344e41; margin-bottom: 5px">Welcome back.</h2>
+          <p style="color: #555; margin-bottom: 20px">
+            Log in to access your earthy finds.
+          </p>
+          <div class="auth-input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="jane@example.com"
+              required
+            />
+          </div>
+
+          <div class="auth-input-group">
+            <label>Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                placeholder="••••••••"
+                required
+                style="padding-right: 40px"
+              />
+              <button
+                type="button"
+                class="toggle-password-btn"
+                data-target="login-password"
+              >
+                🤫
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="auth-btn" style="margin-top: 10px">
+            Log In
+          </button>
+        </form>
+
+        <form id="modal-signup-form" class="modal-form-view">
+          <h2 style="color: #344e41; margin-bottom: 5px">Join us.</h2>
+          <p style="color: #555; margin-bottom: 20px">
+            Create an account to save your favorites.
+          </p>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>First Name</label
+              ><input
+                type="text"
+                id="signup-name"
+                placeholder="e.g. Jane"
+                required
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Email Address</label
+              ><input
+                type="email"
+                id="signup-email"
+                placeholder="jane@example.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>Phone Number (CA)</label
+              ><input
+                type="tel"
+                id="signup-phone"
+                placeholder="(123) 456-7890"
+                required
+                maxlength="14"
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Date of Birth</label
+              ><input
+                type="date"
+                id="signup-dob"
+                required
+                style="color: #555"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>Postal Code</label
+              ><input
+                type="text"
+                id="signup-postal"
+                placeholder="A1A 1A1"
+                required
+                maxlength="7"
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="signup-password"
+                  placeholder="••••••••"
+                  required
+                  style="padding-right: 40px"
+                />
+                <button
+                  type="button"
+                  class="toggle-password-btn"
+                  data-target="signup-password"
+                >
+                  🤫
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="password-rules">
+            <div id="rule-length" class="rule">• At least 8 characters</div>
+            <div id="rule-upper" class="rule">• One uppercase letter</div>
+            <div id="rule-number" class="rule">• One number</div>
+            <div id="rule-special" class="rule">• One special char (!@#$%)</div>
+          </div>
+          <button type="submit" class="auth-btn" style="margin-top: 10px">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicorn | Our Roots</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div
+        class="logo"
+        style="flex: 1; display: flex; justify-content: flex-start"
+      >
+        <a href="index.html" style="text-decoration: none; color: inherit"
+          >🌿🦄 Unicorn</a
+        >
+      </div>
+
+      <nav style="flex: 0 0 auto">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#shop">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#" id="login-link" class="login-nav">Log In</a></li>
+        </ul>
+      </nav>
+
+      <div
+        class="header-actions"
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          gap: 20px;
+          padding-bottom: 5px;
+        "
+      >
+        <div
+          class="search-container"
+          style="
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 12px;
+          "
+        >
+          <button
+            id="search-icon-btn"
+            title="Search"
+            style="
+              background: none;
+              border: none;
+              cursor: pointer;
+              padding: 5px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              src="img/search-icon.png"
+              alt="Search"
+              style="width: 20px; height: 20px; object-fit: contain"
+            />
+          </button>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search nature..."
+            autocomplete="off"
+          />
+          <div id="search-results" class="search-dropdown"></div>
+        </div>
+
+        <a href="wishlist.html" class="nav-action-wrapper" title="Wishlist">
+          <div class="icon-container">
+            <img src="img/heart-icon.png" alt="Wishlist" class="nav-icon" />
+            <span
+              id="wishlist-count"
+              class="notification-badge"
+              style="display: none"
+              >0</span
+            >
+          </div>
+          <span class="nav-label">Wishlist</span>
+        </a>
+
+        <a href="cart.html" class="nav-action-wrapper" title="Basket">
+          <div class="icon-container">
+            <img
+              src="img/empty-basket.png"
+              id="cart-icon-img"
+              alt="Basket"
+              class="nav-icon"
+            />
+            <span
+              id="cart-count"
+              class="notification-badge"
+              style="display: none"
+              >0</span
+            >
+          </div>
+          <span class="nav-label">Basket</span>
+        </a>
+
+        <button
+          id="cursor-toggle"
+          class="nav-action-wrapper"
+          title="Toggle Nature Cursor"
+        >
+          <div
+            class="circle-icon"
+            style="
+              width: 25px;
+              height: 25px;
+              font-size: 1.25rem;
+              border-color: #a3b18a;
+              background-color: #fafafa;
+            "
+          >
+            🖱️
+          </div>
+          <span class="nav-label">Cursor</span>
+        </button>
+
+        <div class="help-dropdown-container" style="position: relative">
+          <button
+            id="help-menu-btn"
+            class="nav-action-wrapper"
+            title="Help & Support"
+          >
+            <div class="circle-icon">❓</div>
+            <span class="nav-label">Help</span>
+          </button>
+          <div id="help-dropdown-menu" class="help-dropdown">
+            <a href="help.html#returns">Returns & Refunds (CA)</a>
+            <a href="help.html#faq">FAQs</a>
+            <a href="help.html#support">Customer Support</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <h1>Our Roots</h1>
+        <p>Born from a love of the earth, woven for the modern spirit.</p>
+      </div>
+    </section>
+
+    <section class="our-story">
+      <div class="story-container">
+        <div class="story-text">
+          <h2>Fashion that breathes.</h2>
+          <p>
+            At Unicorn, we believe that magic isn't a fairy tale—it's found in
+            the quiet moments of nature. We started with a simple idea: women's
+            clothing should feel as free and grounding as a walk through a
+            forest.
+          </p>
+          <p>
+            Every piece in our collection is crafted using ethically sourced,
+            organic materials like breathable linen, wild cotton, and bamboo. We
+            partner directly with artisan communities to ensure fair wages and
+            minimal environmental impact, bringing you ethereal styles that
+            leave a lighter footprint on our planet.
+          </p>
+        </div>
+        <div class="story-image-placeholder" style="background-color: #dad7cd">
+          <span style="color: #588157; font-size: 3rem">🍃</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-section">
+      <h2>Our Eco-Impact</h2>
+      <p>With every dress purchased, you help us give back to the earth.</p>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-icon">🌳</div>
+          <h3 class="counter" data-target="15420">373</h3>
+          <p>Trees Planted</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-icon">💧</div>
+          <h3 class="counter" data-target="85000">67</h3>
+          <p>Gallons of Water Saved</p>
+        </div>
+        <div class="impact-card">
+          <div class="impact-icon">🤝</div>
+          <h3 class="counter" data-target="250">264</h3>
+          <p>Artisans Supported</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>🦄 Unicorn</h3>
+          <p>
+            Fashion that respects the earth. We believe in sustainable practices
+            and natural beauty.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p>📍 123 Greenway Blvd, Eco District</p>
+          <p>📞 (604) 555-0155</p>
+          <p>✉️ hello@unicornnature.com</p>
+        </div>
+        <div class="footer-column">
+          <h3>Office Hours</h3>
+          <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+          <p>Saturday: 10:00 AM - 4:00 PM</p>
+          <p>Sunday: Closed (Out exploring nature)</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Unicorn E-Commerce. Sustainably crafted.</p>
+      </div>
+    </footer>
+
+    <div id="auth-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <div class="auth-toggle-container">
+          <button id="toggle-login" class="auth-toggle-btn active">
+            Log In
+          </button>
+          <button id="toggle-signup" class="auth-toggle-btn">Sign Up</button>
+        </div>
+
+        <form id="modal-login-form" class="modal-form-view active-view">
+          <h2 style="color: #344e41; margin-bottom: 5px">Welcome back.</h2>
+          <p style="color: #555; margin-bottom: 20px">
+            Log in to access your earthy finds.
+          </p>
+          <div class="auth-input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="jane@example.com"
+              required
+            />
+          </div>
+
+          <div class="auth-input-group">
+            <label>Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                placeholder="••••••••"
+                required
+                style="padding-right: 40px"
+              />
+              <button
+                type="button"
+                class="toggle-password-btn"
+                data-target="login-password"
+              >
+                🤫
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="auth-btn" style="margin-top: 10px">
+            Log In
+          </button>
+        </form>
+
+        <form id="modal-signup-form" class="modal-form-view">
+          <h2 style="color: #344e41; margin-bottom: 5px">Join us.</h2>
+          <p style="color: #555; margin-bottom: 20px">
+            Create an account to save your favorites.
+          </p>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>First Name</label
+              ><input
+                type="text"
+                id="signup-name"
+                placeholder="e.g. Jane"
+                required
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Email Address</label
+              ><input
+                type="email"
+                id="signup-email"
+                placeholder="jane@example.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>Phone Number (CA)</label
+              ><input
+                type="tel"
+                id="signup-phone"
+                placeholder="(123) 456-7890"
+                required
+                maxlength="14"
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Date of Birth</label
+              ><input
+                type="date"
+                id="signup-dob"
+                required
+                style="color: #555"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>Postal Code</label
+              ><input
+                type="text"
+                id="signup-postal"
+                placeholder="A1A 1A1"
+                required
+                maxlength="7"
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="signup-password"
+                  placeholder="••••••••"
+                  required
+                  style="padding-right: 40px"
+                />
+                <button
+                  type="button"
+                  class="toggle-password-btn"
+                  data-target="signup-password"
+                >
+                  🤫
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="password-rules">
+            <div id="rule-length" class="rule">• At least 8 characters</div>
+            <div id="rule-upper" class="rule">• One uppercase letter</div>
+            <div id="rule-number" class="rule">• One number</div>
+            <div id="rule-special" class="rule">• One special char (!@#$%)</div>
+          </div>
+          <button type="submit" class="auth-btn" style="margin-top: 10px">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

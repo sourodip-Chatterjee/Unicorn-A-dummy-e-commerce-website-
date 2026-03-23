@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unicorn | Secure Checkout</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="checkout-page-bg">
+    <header>
+      <div
+        class="logo"
+        style="flex: 1; display: flex; justify-content: flex-start"
+      >
+        <a href="index.html" style="text-decoration: none; color: inherit"
+          >🌿🦄 Unicorn</a
+        >
+      </div>
+      <nav style="flex: 0 0 auto">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#shop">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#" id="login-link" class="login-nav">Log In</a></li>
+        </ul>
+      </nav>
+      <div
+        class="header-actions"
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          gap: 20px;
+          padding-bottom: 5px;
+        "
+      >
+        <div
+          class="search-container"
+          style="
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 12px;
+          "
+        >
+          <button
+            id="search-icon-btn"
+            title="Search"
+            style="
+              background: none;
+              border: none;
+              cursor: pointer;
+              padding: 5px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              src="img/search-icon.png"
+              alt="Search"
+              style="width: 20px; height: 20px; object-fit: contain"
+            />
+          </button>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search nature..."
+            autocomplete="off"
+          />
+          <div id="search-results" class="search-dropdown"></div>
+        </div>
+        <a href="wishlist.html" class="nav-action-wrapper" title="Wishlist"
+          ><div class="icon-container">
+            <img
+              src="img/heart-icon.png"
+              alt="Wishlist"
+              class="nav-icon"
+            /><span
+              id="wishlist-count"
+              class="notification-badge"
+              style="display: none"
+              >0</span
+            >
+          </div>
+          <span class="nav-label">Wishlist</span></a
+        >
+        <a href="cart.html" class="nav-action-wrapper" title="Basket"
+          ><div class="icon-container">
+            <img
+              src="img/empty-basket.png"
+              id="cart-icon-img"
+              alt="Basket"
+              class="nav-icon"
+            /><span
+              id="cart-count"
+              class="notification-badge"
+              style="display: none"
+              >0</span
+            >
+          </div>
+          <span class="nav-label">Basket</span></a
+        >
+        <button
+          id="cursor-toggle"
+          class="nav-action-wrapper"
+          title="Toggle Nature Cursor"
+        >
+          <div
+            class="circle-icon"
+            style="
+              width: 25px;
+              height: 25px;
+              font-size: 1.25rem;
+              border-color: #a3b18a;
+              background-color: #fafafa;
+            "
+          >
+            🖱️
+          </div>
+          <span class="nav-label">Cursor</span>
+        </button>
+        <div class="help-dropdown-container" style="position: relative">
+          <button
+            id="help-menu-btn"
+            class="nav-action-wrapper"
+            title="Help & Support"
+          >
+            <div class="circle-icon">❓</div>
+            <span class="nav-label">Help</span>
+          </button>
+          <div id="help-dropdown-menu" class="help-dropdown">
+            <a href="help.html#returns">Returns & Refunds (CA)</a
+            ><a href="help.html#faq">FAQs</a
+            ><a href="help.html#support">Customer Support</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="checkout-section">
+      <div class="checkout-container">
+        <div class="checkout-form-area">
+          <h2>Shipping Details</h2>
+          <form id="checkout-form">
+            <div class="input-group">
+              <input type="text" placeholder="First Name" required /><input
+                type="text"
+                placeholder="Last Name"
+                required
+              />
+            </div>
+            <input
+              type="text"
+              class="full-width-input"
+              placeholder="Full Address"
+              required
+            />
+            <div class="input-group">
+              <input type="text" placeholder="City" required /><input
+                type="text"
+                placeholder="Postal Code"
+                required
+              />
+            </div>
+
+            <h2 style="margin-top: 40px">Payment Method</h2>
+            <div class="payment-options">
+              <label class="payment-method"
+                ><input type="radio" name="payment" value="card" checked /><span
+                  class="pay-box"
+                  >💳 Credit / Debit Card</span
+                ></label
+              >
+              <label class="payment-method"
+                ><input type="radio" name="payment" value="paypal" /><span
+                  class="pay-box"
+                  >🔵 PayPal</span
+                ></label
+              >
+              <label class="payment-method"
+                ><input type="radio" name="payment" value="stripe" /><span
+                  class="pay-box"
+                  >🟣 Stripe</span
+                ></label
+              >
+              <label class="payment-method"
+                ><input type="radio" name="payment" value="bank" /><span
+                  class="pay-box"
+                  >🏦 Bank Transfer</span
+                ></label
+              >
+            </div>
+            <div id="card-details" class="card-details-box">
+              <input
+                type="text"
+                class="full-width-input"
+                placeholder="Card Number (Dummy)"
+                required
+              />
+              <div class="input-group">
+                <input type="text" placeholder="MM/YY" required /><input
+                  type="text"
+                  placeholder="CVC"
+                  required
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn full-width checkout-btn"
+              id="pay-now-btn"
+              style="margin-top: 30px; font-size: 1.2rem"
+            >
+              Pay <span id="checkout-total-display">₹0</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="checkout-summary">
+          <h3>Order Summary</h3>
+          <div id="checkout-items-list"></div>
+          <div
+            class="checkout-mini-item"
+            id="checkout-discount-row"
+            style="
+              display: none;
+              color: #588157;
+              font-weight: bold;
+              margin-top: 10px;
+            "
+          >
+            <span>Nature Discount</span
+            ><span id="checkout-discount">-$0.00 CAD</span>
+          </div>
+          <hr
+            style="margin: 20px 0; border: 0; border-top: 1px solid #dad7cd"
+          />
+          <div class="summary-line total">
+            <span>Total</span><span id="checkout-final-total">₹0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="success-modal" class="modal">
+      <div class="modal-content success-content">
+        <div class="success-icon">🌱</div>
+        <h2>Order Planted!</h2>
+        <p>
+          Thank you for your purchase. We are packing your earthy finds with
+          100% eco-friendly materials.
+        </p>
+
+        <p
+          style="
+            font-size: 1.1rem;
+            color: #344e41;
+            font-weight: bold;
+            margin-top: 15px;
+          "
+        >
+          🚚 It will be delivered in the next 7 days.
+        </p>
+
+        <p style="font-size: 0.9rem; color: #588157; margin-top: 10px">
+          A confirmation email is gently floating its way to your inbox.
+        </p>
+        <button
+          class="btn full-width"
+          onclick="window.location.href = 'index.html'"
+          style="margin-top: 25px"
+        >
+          Return to Forest (Home)
+        </button>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="modal-backdrop">
+      <div class="modal-card">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <div class="auth-toggle-container">
+          <button id="toggle-login" class="auth-toggle-btn active">
+            Log In
+          </button>
+          <button id="toggle-signup" class="auth-toggle-btn">Sign Up</button>
+        </div>
+
+        <form id="modal-login-form" class="modal-form-view active-view">
+          <h2 style="color: #344e41; margin-bottom: 5px">Welcome back.</h2>
+          <p style="color: #555; margin-bottom: 20px">
+            Log in to access your earthy finds.
+          </p>
+          <div class="auth-input-group">
+            <label>Email Address</label
+            ><input
+              type="email"
+              id="login-email"
+              placeholder="jane@example.com"
+              required
+            />
+          </div>
+          <div class="auth-input-group" style="position: relative">
+            <label>Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                placeholder="••••••••"
+                required
+                style="padding-right: 40px"
+              /><button
+                type="button"
+                class="toggle-password-btn"
+                data-target="login-password"
+              >
+                🤫
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="auth-btn" style="margin-top: 10px">
+            Log In
+          </button>
+        </form>
+
+        <form id="modal-signup-form" class="modal-form-view">
+          <h2 style="color: #344e41; margin-bottom: 5px">Join us.</h2>
+          <p style="color: #555; margin-bottom: 20px">
+            Create an account to save your favorites.
+          </p>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>First Name</label
+              ><input
+                type="text"
+                id="signup-name"
+                placeholder="e.g. Jane"
+                required
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Email Address</label
+              ><input
+                type="email"
+                id="signup-email"
+                placeholder="jane@example.com"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>Phone Number (CA)</label
+              ><input
+                type="tel"
+                id="signup-phone"
+                placeholder="(123) 456-7890"
+                required
+                maxlength="14"
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Date of Birth</label
+              ><input
+                type="date"
+                id="signup-dob"
+                required
+                style="color: #555"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="auth-input-group">
+              <label>Postal Code</label
+              ><input
+                type="text"
+                id="signup-postal"
+                placeholder="A1A 1A1"
+                required
+                maxlength="7"
+              />
+            </div>
+            <div class="auth-input-group">
+              <label>Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="signup-password"
+                  placeholder="••••••••"
+                  required
+                  style="padding-right: 40px"
+                /><button
+                  type="button"
+                  class="toggle-password-btn"
+                  data-target="signup-password"
+                >
+                  🤫
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="password-rules">
+            <div id="rule-length" class="rule">• At least 8 characters</div>
+            <div id="rule-upper" class="rule">• One uppercase letter</div>
+            <div id="rule-number" class="rule">• One number</div>
+            <div id="rule-special" class="rule">• One special char (!@#$%)</div>
+          </div>
+          <button type="submit" class="auth-btn" style="margin-top: 10px">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

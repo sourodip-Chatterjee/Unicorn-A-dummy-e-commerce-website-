@@ -1,0 +1,1817 @@
+/* ==========================================
+   1. CSS VARIABLES (THEME COLORS) & RESET
+   ========================================== */
+:root {
+  --primary-green: #588157; /* Buttons, highlights, active states */
+  --dark-green: #344e41; /* Headings, text, dark backgrounds */
+  --sage-green: #a3b18a; /* Hover states, soft accents */
+  --beige-border: #dad7cd; /* Borders, dividers */
+  --off-white: #fafafa; /* Backgrounds, cards */
+  --danger-red: #e63946; /* Errors, remove buttons */
+  --text-gray: #555555; /* Paragraph text */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Keep whatever font you are using! */
+    color: #333;
+    margin: 0;
+    padding: 0;
+
+    /* THE NEW UNIVERSAL FADE */
+    background: linear-gradient(to bottom, #ecc7ff 0%, #9ab7a8 100%); /* A very soft, high-end sage green fade */
+    background-attachment: fixed; /* This is crucial: it stops the background from breaking when you scroll! */
+    min-height: 100vh; /* Ensures the fade reaches the absolute bottom of the screen */
+}
+
+/* ==========================================
+   2. GLOBAL ELEMENTS & BUTTONS
+   ========================================== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--dark-green);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--dark-green);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--primary-green);
+}
+.btn.full-width {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* ==========================================
+   3. HEADER & NAVIGATION
+   ========================================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Keeps header on top */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-green);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+nav a {
+  color: var(--text-gray);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: var(--sage-green);
+}
+
+.login-nav {
+  border: 1px solid var(--primary-green);
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: var(--primary-green);
+}
+.login-nav:hover {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+/* Header Icons & Notification Badges */
+.nav-action-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 4px;
+}
+.nav-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-gray);
+  transition: color 0.2s ease;
+}
+.nav-action-wrapper:hover .nav-label {
+  color: var(--primary-green);
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+}
+.nav-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.circle-icon {
+  border: 1px solid var(--beige-border);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+.nav-action-wrapper:hover .circle-icon {
+  background-color: #f3f7f3;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: var(--danger-red);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   4. LIVE SEARCH DROPDOWN
+   ========================================== */
+#search-input {
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  border: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: var(--off-white);
+  border-radius: 20px;
+  outline: none;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+#search-input.active {
+  width: 200px;
+  opacity: 1;
+  padding: 8px 15px;
+  border: 1px solid var(--beige-border);
+  pointer-events: auto;
+  margin-left: 10px;
+}
+#search-input.active:focus {
+  border-color: var(--primary-green);
+  background: white;
+  box-shadow: 0 0 10px rgba(88, 129, 87, 0.1);
+}
+#search-icon-btn {
+  transition: background-color 0.2s;
+}
+#search-icon-btn:hover {
+  background-color: #f3f7f3;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  width: 280px;
+  background: white;
+  border: 1px solid var(--beige-border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+  max-height: 350px;
+  overflow-y: auto;
+}
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  color: #333;
+  border-bottom: 1px solid #f3f7f3;
+  transition: background 0.2s;
+}
+.search-result-item:hover {
+  background: #f3f7f3;
+}
+.search-result-img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   5. HERO SECTIONS (HOME & ABOUT)
+   ========================================== */
+.hero {
+  height: 65vh;
+  background: linear-gradient(to bottom, #5d987a 0%, var(--off-white) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.3);
+  color: white;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+.about-hero {
+  height: 40vh;
+  background: linear-gradient(
+    to bottom,
+    var(--dark-green) 0%,
+    var(--off-white) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+.about-hero h1 {
+  color: white;
+  font-size: 3rem;
+}
+
+/* ==========================================
+   6. PRODUCT GRID & CARDS
+   ========================================== */
+.shop-section {
+  padding: 60px 50px;
+  text-align: center;
+}
+.shop-section h2 {
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  /* THE MAGIC LINE: Automatically fits as many 250px cards as possible, and stretches them evenly! */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* The Stretched Link Architecture */
+.product-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+.product-card a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.add-to-cart-btn,
+.in-cart-controls,
+.grid-wishlist-btn,
+.remove-wishlist-btn,
+.grid-buy-now-btn {
+  position: relative;
+  z-index: 2;
+}
+
+.product-image {
+  width: 100%;
+  height: 380px; /* Keeps the luxurious tall portrait look */
+  object-fit: cover; /* Fills the box completely, edge-to-edge */
+  object-position: top; /* MAGIC FIX: Anchors to the top so faces are never cut off! */
+  border-radius: 10px; /* Keeps your beautiful curved corners */
+  margin-bottom: 15px;
+}
+
+/* --- Suggestion Grid Specific Sizing --- */
+#suggestion-grid {
+  display: flex;
+  justify-content: center; /* Centers the 3 cards perfectly */
+  flex-wrap: wrap; /* Allows them to stack neatly on phones */
+  gap: 30px;
+}
+
+#suggestion-grid .product-card {
+  width: 100%;
+  max-width: 300px; /* MAGIC FIX: Stops the cards from stretching into giants! */
+  border-radius: 100px;
+  height: 680px;
+}
+
+#suggestion-grid .product-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 9; /* Keeps the natural tall portrait shape */
+  object-fit: cover; /* Fills the whole box with no white space */
+  object-position: top; /* Ensures the model's face is never cut off */
+  border-radius: 100px; /* Keeps the beautifully curved corners */
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  color: #444;
+}
+.price {
+  color: var(--primary-green);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+/* Smart Buttons */
+.add-to-cart-btn {
+  background: transparent;
+  color: var(--dark-green);
+  border: 1px solid var(--dark-green);
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.add-to-cart-btn:hover {
+  background: var(--dark-green);
+  color: white;
+}
+
+.in-cart-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f3f7f3;
+  border: 2px solid var(--primary-green);
+  border-radius: 5px;
+  width: 100%;
+  overflow: hidden;
+}
+.in-cart-controls.full-width {
+  border-radius: 8px;
+}
+.control-btn {
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+}
+.in-cart-controls.full-width .control-btn {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+}
+.control-btn:hover {
+  background: var(--dark-green);
+}
+.control-qty {
+  font-weight: bold;
+  color: var(--dark-green);
+  font-size: 1rem;
+}
+.in-cart-controls.full-width .control-qty {
+  font-size: 1.2rem;
+}
+
+/* ==========================================
+   7. PRODUCT DETAIL PAGE
+   ========================================== */
+.product-page-container {
+  padding: 60px 50px;
+  width: 100%;
+}
+.product-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: stretch;
+}
+
+/* Zoom Logic */
+#zoom-container {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.product-image-large {
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.product-info-panel {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Size Selector */
+.size-btn {
+  padding: 10px 20px;
+  border: 1px solid var(--beige-border);
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #333;
+}
+.size-btn:hover {
+  border-color: var(--primary-green);
+  background: #f3f7f3;
+}
+.size-btn.active {
+  border-color: var(--primary-green);
+  background: #f3f7f3;
+  font-weight: bold;
+  color: var(--dark-green);
+  box-shadow: 0 0 0 2px rgba(88, 129, 87, 0.2);
+}
+
+/* Action Row */
+.product-action-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+.action-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.buy-now-btn {
+  background-color: var(--dark-green);
+  color: white;
+  border: 2px solid var(--dark-green);
+}
+.buy-now-btn:hover {
+  background-color: #24362d;
+}
+.wishlist-btn {
+  background-color: white;
+  color: var(--dark-green);
+  border: 2px solid var(--beige-border);
+}
+.wishlist-btn:hover,
+.wishlist-btn.active {
+  border-color: var(--danger-red);
+  color: var(--danger-red);
+}
+
+/* ==========================================
+   8. CART & CHECKOUT PAGES
+   ========================================== */
+.cart-page-section,
+.checkout-section {
+  padding: 60px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 60vh;
+}
+.cart-page-section h2,
+.checkout-section h2 {
+  color: var(--dark-green);
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--beige-border);
+  padding-bottom: 10px;
+}
+.cart-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 50px;
+}
+
+/* List Items */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.cart-item-details h4 {
+  color: var(--dark-green);
+  margin-bottom: 5px;
+}
+.cart-item-price {
+  color: var(--primary-green);
+  font-weight: bold;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.qty-btn {
+  background: var(--beige-border);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--dark-green);
+}
+.qty-btn:hover {
+  background: var(--sage-green);
+  color: white;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--danger-red);
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+/* Summary Boxes */
+.cart-summary,
+.checkout-summary {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+.checkout-summary {
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+.cart-summary h3,
+.checkout-summary h3 {
+  color: var(--dark-green);
+  margin-bottom: 20px;
+}
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  color: var(--text-gray);
+}
+.summary-line.total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--dark-green);
+  margin-top: 15px;
+}
+
+/* Checkout Inputs & Forms */
+.input-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.input-group input,
+.full-width-input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--beige-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+}
+.full-width-input {
+  margin-bottom: 15px;
+}
+input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 5px rgba(88, 129, 87, 0.2);
+}
+
+.payment-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.payment-method input[type="radio"] {
+  display: none;
+}
+.pay-box {
+  display: block;
+  padding: 15px;
+  border: 2px solid var(--beige-border);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: white;
+}
+.payment-method input[type="radio"]:checked + .pay-box {
+  border-color: var(--primary-green);
+  background-color: #f3f7f3;
+  color: var(--dark-green);
+}
+.card-details-box {
+  background: var(--off-white);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--beige-border);
+}
+
+.checkout-mini-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  color: var(--text-gray);
+}
+.checkout-mini-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 15px;
+}
+
+/* Coupon Box */
+.coupon-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.coupon-box input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--beige-border);
+  border-radius: 5px;
+  font-size: 0.95rem;
+}
+.coupon-box button {
+  padding: 10px 20px;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ==========================================
+   9. WISHLIST, HELP & ABOUT PAGES
+   ========================================== */
+.wishlist-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px;
+  color: var(--text-gray);
+  background: var(--off-white);
+  border-radius: 15px;
+}
+.remove-wishlist-btn {
+  background: none;
+  border: none;
+  color: var(--danger-red);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Help Dropdown & Page */
+.help-dropdown {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  width: 240px;
+  background: white;
+  border: 1px solid var(--beige-border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+}
+.help-dropdown a {
+  padding: 15px 20px;
+  color: #333;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f3f7f3;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.help-dropdown a:hover {
+  background: var(--primary-green);
+  color: white;
+}
+.help-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.help-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+.help-box {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  scroll-margin-top: 100px;
+}
+.faq-item {
+  margin-bottom: 25px;
+}
+.faq-question {
+  font-weight: bold;
+  color: var(--primary-green);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+/* About Story & Impact */
+.our-story {
+  padding: 80px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.story-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.story-image-placeholder {
+  height: 400px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.impact-section {
+  background-color: #f3f7f3;
+  padding: 80px 50px;
+  text-align: center;
+}
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 50px auto 0 auto;
+}
+.impact-card {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+.impact-card:hover {
+  transform: translateY(-10px);
+}
+.counter {
+  font-size: 3rem;
+  color: var(--primary-green);
+  margin-bottom: 5px;
+}
+.impact-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* ==========================================
+   10. REVIEWS & EMOJI SYSTEM
+   ========================================== */
+.emoji-rating-input {
+  display: flex;
+  gap: 15px;
+  font-size: 2.2rem;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 20px;
+}
+.emoji-rating-input span {
+  transition:
+    transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1),
+    filter 0.2s;
+  filter: grayscale(100%) opacity(40%);
+}
+.emoji-rating-input span:hover {
+  transform: scale(1.2);
+  filter: grayscale(0%) opacity(100%);
+}
+.emoji-rating-input span.selected {
+  transform: scale(1.25);
+  filter: grayscale(0%) opacity(100%);
+}
+
+.review-card {
+  background: white;
+  border: 1px solid var(--beige-border);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+.verified-badge {
+  font-size: 0.75rem;
+  color: var(--primary-green);
+  background: #e8f0e8;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+.review-stars-display {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.review-text {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+.review-uploaded-img {
+  max-width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid var(--beige-border);
+}
+
+.file-upload-btn {
+  display: inline-block;
+  background-color: white;
+  color: var(--dark-green);
+  border: 1px solid var(--beige-border);
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+.file-upload-btn:hover {
+  background-color: #f3f7f3;
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+}
+
+.review-actions-bar {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  border-top: 1px solid #f3f7f3;
+  padding-top: 10px;
+}
+.review-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0;
+  transition: color 0.2s;
+}
+.btn-reply {
+  color: var(--primary-green);
+}
+.btn-reply:hover {
+  color: var(--dark-green);
+  text-decoration: underline;
+}
+.btn-edit {
+  color: #888;
+}
+.btn-edit:hover {
+  color: #333;
+  text-decoration: underline;
+}
+.btn-delete {
+  color: var(--danger-red);
+  opacity: 0.8;
+}
+.btn-delete:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.reply-form {
+  display: none;
+  margin-top: 15px;
+  background: var(--off-white);
+  padding: 15px;
+  border-radius: 8px;
+}
+.reply-section {
+  margin-top: 20px;
+  padding-left: 20px;
+  border-left: 3px solid #e8f0e8;
+}
+.reply-card {
+  background: var(--off-white);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* ==========================================
+   11. MODALS & AUTHENTICATION
+   ========================================== */
+.modal,
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px; /* NEW: Keeps the modal from touching the very edge of the browser */
+}
+.modal.show,
+.modal-backdrop.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content,
+.modal-card {
+  background: white;
+  padding: 35px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 480px; /* NEW: Made slightly wider so columns have room to breathe */
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  max-height: 85vh; /* THE FIX: Forces the modal to never exceed 85% of your screen height */
+  overflow-y: auto; /* THE FIX: Creates a beautiful scrollbar inside the card! */
+}
+.modal.show .modal-content,
+.modal-backdrop.show .modal-card {
+  transform: translateY(0);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.close-btn:hover {
+  color: var(--dark-green);
+}
+
+/* Dual Auth Modal Elements */
+.auth-toggle-container {
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #f3f7f3;
+}
+.auth-toggle-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.auth-toggle-btn.active {
+  color: var(--dark-green);
+  border-bottom-color: var(--primary-green);
+}
+.modal-form-view {
+  display: none;
+}
+.modal-form-view.active-view {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.auth-input-group {
+  margin-bottom: 15px;
+}
+.auth-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dark-green);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.auth-input-group input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid var(--beige-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--off-white);
+  transition: all 0.3s ease;
+}
+.auth-input-group input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(88, 129, 87, 0.1);
+}
+.auth-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.auth-btn:hover {
+  background: var(--dark-green);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 78, 65, 0.2);
+}
+
+/* Password Rules & Visibility Fixes */
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+.form-row .auth-input-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+/* --- Lock the Wrapper --- */
+.password-wrapper {
+  position: relative !important; /* The !important forces the browser to lock onto this box ONLY */
+  width: 100%;
+  display: block;
+}
+/* #modal-signup-form .toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+#modal-login-form .toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+} */
+
+/* --- Perfectly Center the Emoji --- */
+.password-wrapper .toggle-password-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%); /* Pulls it perfectly into the vertical center */
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  z-index: 5; /* Ensures the emoji sits clearly on top of the text box */
+}
+
+/* --- Password Rules Styling --- */
+.password-rules {
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.rule {
+  margin-bottom: 4px;
+  transition: color 0.2s;
+  color: #888;
+} /* The Neutral Grey State */
+.rule.invalid {
+  color: #e63946;
+} /* Red for bad */
+.rule.valid {
+  color: #588157;
+} /* Green for good! */
+
+/* Legacy Standalone Auth Pages */
+.auth-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+.auth-image-side {
+  flex: 1;
+  min-width: 350px;
+  background: url("img/placeholder.png") center/cover;
+  position: relative;
+}
+.auth-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(52, 78, 65, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+.auth-form-side {
+  flex: 1;
+  min-width: 350px;
+  padding: 60px 50px;
+}
+
+/* ==========================================
+   12. CUSTOM CURSOR & FLOATING BASKET
+   ========================================== */
+body.nature-cursor {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' style='font-size:32px'>☘️</text></svg>")
+      20 20,
+    auto;
+}
+body.nature-cursor a,
+body.nature-cursor button,
+body.nature-cursor .close-btn,
+body.nature-cursor .login-nav {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' style='font-size:36px'>🍀</text></svg>")
+      22 22,
+    pointer !important;
+}
+body.nature-cursor .checkout-btn {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><text x='40%' y='50%' dominant-baseline='central' text-anchor='middle' style='font-size:40px'>🍀</text><text x='85%' y='70%' dominant-baseline='central' text-anchor='middle' style='font-size:20px'>🍃</text></svg>")
+      27 27,
+    pointer !important;
+}
+#cursor-toggle:hover {
+  background-color: #f3f7f3;
+  border-color: var(--primary-green);
+}
+
+.floating-cart-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+  background-color: white;
+  border: 2px solid var(--primary-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-decoration: none;
+}
+.floating-cart-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background-color: #f3f7f3;
+}
+.floating-cart-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* ==========================================
+   13. FOOTER
+   ========================================== */
+footer {
+  background: var(--dark-green);
+  color: var(--beige-border);
+  padding: 50px 50px 20px 50px;
+  margin-top: 40px;
+}
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-column h3 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+.footer-column p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--primary-green);
+  padding-top: 20px;
+  font-size: 0.85rem;
+}
+
+/* ==========================================
+   14. ANIMATIONS
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes sproutBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+.success-content {
+  text-align: center;
+  padding: 50px 40px;
+}
+.success-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: sproutBounce 2s infinite;
+}
+
+/* ==========================================
+   15. MEDIA QUERIES (MOBILE RESPONSIVENESS)
+   ========================================== */
+/* Date Input Fix */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .cart-container {
+    grid-template-columns: 1fr;
+  }
+  .checkout-container {
+    grid-template-columns: 1fr;
+  }
+  .payment-options {
+    grid-template-columns: 1fr;
+  }
+  .story-container {
+    grid-template-columns: 1fr;
+  }
+  .product-layout {
+    grid-template-columns: 1fr;
+  }
+  .product-image-large {
+    height: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* ===============================================
+16: MOBILE RESPONSIVENESS (PHONES & TABLETS)
+===============================================*/
+
+/* --- 0. GLOBAL MOBILE FIX (Kills the horizontal sliding completely) --- */
+
+/* --- 1. TABLET LAYOUT (Screens smaller than 992px) --- */
+@media (max-width: 992px) {
+  /* Stack the side-by-side pages vertically */
+  .product-layout,
+  .cart-container,
+  .checkout-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Make the content take full width when stacked */
+  .product-info-panel,
+  .checkout-form-area,
+  .checkout-summary,
+  .cart-summary {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* --- 2. MOBILE PHONE LAYOUT (Screens smaller than 768px) --- */
+@media (max-width: 768px) {
+  /* --- Header & Navigation --- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fafafa; /* Matches your theme */
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Adds a subtle shadow when scrolling */
+  }
+
+  .logo {
+    justify-content: center !important;
+    margin-bottom: 5px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 5px;
+  }
+
+  .header-actions {
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .search-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #search-input.active {
+    width: 200px; /* Shrinks so it fits the screen */
+  }
+
+  /* --- Hero Banner --- */
+  .hero {
+    padding: 30px 15px; /* Drastically reduces the massive height */
+    min-height: auto;
+  }
+  .hero-content h1 {
+    font-size: 2rem; /* Smaller text for phone */
+    margin-bottom: 10px;
+  }
+  .hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  /* --- The 2-Column Product Grid --- */
+  .product-grid,
+  #home-product-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ) !important; /* Forces exactly 2 columns */
+    gap: 10px; /* Shrinks the gap so they fit */
+    margin-top: 25px;
+  }
+
+  .product-card {
+    padding: 10px; /* Smaller card padding */
+  }
+
+  .product-image {
+    height: 180px; /* Shorter image so it fits the narrow column perfectly */
+    margin-bottom: 10px;
+  }
+
+  .product-card h3 {
+    font-size: 0.85rem; /* Smaller titles */
+    margin-bottom: 4px;
+  }
+
+  .product-card .price {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .add-to-cart-btn,
+  .grid-buy-now-btn {
+    padding: 8px;
+    font-size: 0.75rem; /* Shrinks buttons to fit side-by-side */
+  }
+
+  .grid-wishlist-btn {
+    width: 35px; /* Smaller heart button */
+    font-size: 1rem;
+  }
+
+  /* --- Suggestion Grid (Product Page) --- */
+  #suggestion-grid {
+    flex-direction: row; /* Keep them side by side if possible */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  #suggestion-grid .product-card {
+    width: calc(
+      50% - 5px
+    ); /* Forces exactly 2 per row on the suggestion grid too */
+    max-width: 100%;
+  }
+
+  #suggestion-grid .product-image {
+    height: 180px;
+  }
+
+  /* --- Footer --- */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  /* --- Forms & Modals --- */
+  .modal-card {
+    padding: 25px 15px;
+    margin: 15px;
+    max-height: 90vh;
+  }
+
+  /* Stacks side-by-side inputs (First Name / Last Name) on top of each other */
+  .form-row,
+  .input-group {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .payment-options {
+    flex-direction: column;
+  }
+}
+
+/* ================================================
+17: THE FINAL POLISH (BUTTON LOCKS & SUB-PAGES)
+================================================ */
+
+/* --- 1. THE BUTTON STABILITY FIX (Stops the grid from breaking) --- */
+.add-to-cart-btn,
+.in-cart-controls,
+.grid-buy-now-btn {
+  height: 42px !important; /* Strictly locks the height */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.in-cart-controls {
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* --- 2. THE DEVICE DETECTOR (Hides Custom Cursor on Touch Screens) --- */
+@media (hover: none) and (pointer: coarse) {
+  /* If the device has a touch screen, force the normal cursor */
+  body.nature-cursor * {
+    cursor: auto !important;
+  }
+  /* Hide the cursor toggle button entirely in the navigation */
+  #cursor-toggle {
+    display: none !important;
+  }
+}
+
+/* --- 3. SUB-PAGE MOBILE FIXES (Cart, Checkout, Product, Help) --- */
+@media (max-width: 768px) {
+  /* Hide the cursor toggle just in case the hover media query misses an older iPad */
+  #cursor-toggle {
+    display: none !important;
+  }
+
+  /* CART PAGE: Stack the image and the +/- controls so they don't squish */
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px 10px;
+  }
+  .cart-controls {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .cart-controls .remove-btn {
+    margin-left: 0;
+  }
+
+  /* CHECKOUT PAGE: Stack side-by-side inputs (First Name / Last Name) */
+  .checkout-container {
+    padding: 10px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .payment-options {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* PRODUCT PAGE: Ensure image border is moved to the bottom when stacked */
+  .product-page-container {
+    padding: 15px;
+  }
+  .product-image-container {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  /* HELP PAGE: Give it breathing room */
+  .help-container {
+    padding: 15px;
+  }
+  .faq-item h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===============================
+   ULTIMATE MOBILE OVERHAUL PATCH
+================================== */
+@media (max-width: 768px) {
+  /* 1. THE GRID BUTTON FIX (Removes +/- on mobile grids) */
+  .product-card .in-cart-controls .control-btn {
+    display: none !important; /* Hides the + and - buttons entirely */
+  }
+  .product-card .in-cart-controls {
+    background: #588157 !important; /* Turns the background solid green */
+    color: white !important;
+    border: none !important;
+    cursor: default;
+  }
+  .product-card .in-cart-controls .control-qty {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  /* 2. PRODUCT PAGE IMAGE FIX */
+  .product-image-container {
+    padding: 0 !important;
+    border: none !important;
+    width: 100% !important;
+  }
+  #detail-image-box {
+    width: 100% !important;
+    height: 55vh !important; /* Takes up exactly 55% of the phone screen height */
+    max-height: 450px !important;
+    object-fit: cover !important; /* 'cover' fills the space beautifully without stretching */
+    border-radius: 8px;
+  }
+
+  /* 3. AGGRESSIVELY SHRINK THE SUGGESTION GRID */
+  #suggestion-grid .product-card {
+    padding: 8px !important;
+    height: 280px;
+  }
+  #suggestion-grid .product-image {
+    height: 120px !important; /* Very short image */
+    margin-bottom: 5px !important;
+  }
+  #suggestion-grid h3 {
+    font-size: 0.75rem !important; /* Tiny font */
+    white-space: nowrap; /* Forces text to one line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds '...' if the name is too long */
+    margin-bottom: 2px !important;
+  }
+  #suggestion-grid .price {
+    font-size: 0.75rem !important;
+    margin-bottom: 5px !important;
+  }
+  #suggestion-grid .grid-buy-now-btn {
+    display: none !important; /* Hide 'Buy Now' here to save vertical space */
+  }
+  #suggestion-grid .add-to-cart-btn {
+    padding: 6px !important;
+    font-size: 0.7rem !important;
+    height: 32px !important;
+  }
+  #suggestion-grid .grid-wishlist-btn {
+    height: 32px !important;
+    padding: 0 !important;
+  }
+
+  /* 4. FIX ALL REMAINING SUB-PAGES (Cart, Checkout, Help, About) */
+  /* This stops them from overflowing off the sides of the phone */
+  .cart-container,
+  .checkout-container,
+  .help-container,
+  .about-container,
+  .wishlist-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 10px 0 !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure the body itself isn't adding weird margins */
+  main {
+    padding: 10px !important;
+    overflow-x: hidden;
+  }
+}
+
+/* ==========================================
+   PAGE-SPECIFIC BACKGROUND FADES
+   ========================================== */
+/* The Pinkish Fade for the Wishlist */
+body.wishlist-page-bg {
+  background: linear-gradient(to bottom, #eb9eb8 0%, var(--off-white) 100%);
+  background-attachment: fixed; /* Keeps the fade smooth even if you scroll a lot */
+}
+
+/* The Blue Fade for Checkout */
+body.checkout-page-bg {
+  background: linear-gradient(to bottom, #78bae9 0%, var(--off-white) 100%);
+  background-attachment: fixed;
+}
+
+/* --- THE BASKET TOGGLE STATE --- */
+.add-to-cart-btn.added-active {
+  background-color: #588157 !important; /* Solid Earthy Green */
+  color: white !important;
+  border: 1px solid #588157 !important;
+  font-weight: bold;
+}
+
+/* --- MOBILE CART TOGGLE BUTTON --- */
+.added-toggle-btn {
+  background-color: #588157 !important;
+  color: white !important;
+  border: 1px solid #588157 !important;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px; /* Matches your other buttons */
+}
